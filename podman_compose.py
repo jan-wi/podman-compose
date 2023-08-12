@@ -1010,7 +1010,7 @@ def container_to_args(compose, cnt, detached=True):
     if pull_policy is not None and pull_policy != "build":
         podman_args.extend(["--pull", pull_policy])
     if cnt.get("restart", None) is not None:
-        podman_args.extend(["--restart", cnt["restart"]])
+        podman_args.extend(["--restart=" + cnt["restart"]])
     container_to_ulimit_args(cnt, podman_args)
     container_to_res_args(cnt, podman_args)
     # currently podman shipped by fedora does not package this
